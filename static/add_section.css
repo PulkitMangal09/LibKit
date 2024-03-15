@@ -1,0 +1,45 @@
+.box {
+    width: 600px;
+    height: 100%;
+    background-color: #F5F7F8;
+    padding: 20px;
+    margin: 66px auto; /* Center horizontally */
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center; /* Center vertically */
+    align-items: center;
+}
+
+.btn-outline.cancel {
+    background-color: transparent;
+    color: #f04949;
+    border: 1px solid #f04949;
+    margin-right: 30px; /* Add margin to the right side of each button */
+}
+
+.btn-outline.btn-outline.add-section {
+    background-color: transparent;
+    color: forestgreen;
+    border: 1px solid forestgreen;
+    margin-right: 30px; /* Add margin to the right side of each button */
+}
+
+.btn-outline:first-child {
+    margin-left: 30px; /* Add margin to the left side of the first button */
+}
+
+.btn-outline:hover {
+    background-color: #B784B7;
+    color: #fff;
+}
+
+.btn-outline.cancel:hover {
+    background-color: #f04949;
+    color: #fff;
+}
+
+.btn-outline.add-section:hover {
+    background-color: #4E9F3D;
+    color: #fff;
+}

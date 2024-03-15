@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibKit by Pulkit</title>
+    <link rel="stylesheet" href="/static/ok.css">
+    <script>
+        // JavaScript for smooth scrolling
+        document.addEventListener('DOMContentLoaded', function () {
+            // Smooth scrolling for About link
+            var aboutLink = document.querySelector('a[href="#about"]');
+            aboutLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                var targetSection = document.querySelector('#about');
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // Smooth scrolling for Features link
+            var featuresLink = document.querySelector('a[href="#features"]');
+            featuresLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                var targetSection = document.querySelector('#features');
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" onclick="location.reload();"><h1><span style="font-family: Zapfino; font-style: italic;">LibKit</span></h1></a>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h2>Manage Your Library Effortlessly with <span style="font-family: Zapfino; font-style: italic;">LibKit</span></h2>
+            <p>A comprehensive solution to organize, track, and manage your library resources efficiently.</p>
+            <a href="/login" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2>Key Features</h2>
+            <div class="feature">
+                <h3>Book Management</h3>
+                <p>Efficiently manage your book catalog with advanced search and categorization options.</p>
+            </div>
+            <div class="feature">
+                <h3>User Management</h3>
+                <p>Manage user accounts, issue books, and track borrowing history seamlessly.</p>
+            </div>
+            <!-- Add more features as needed -->
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About LibKit</h2>
+            <p>LibKit is a library management application developed by Pulkit. It aims to streamline library operations and improve user experience for both librarians and patrons.</p>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <p>Connect with us:</p>
+            <ul class="social-icons">
+                <li><a href="https://www.instagram.com/pulkitmangal09?utm_source=qr&igsh=MTU2Mmdxd2x1YjZoNw=="><img src="https://w7.pngwing.com/pngs/722/1011/png-transparent-logo-icon-instagram-logo-instagram-logo-purple-violet-text-thumbnail.png" alt="Instagram"></a></li>
+                <li><a href="#"><img src="https://freelogopng.com/images/all_img/1690643591twitter-x-logo-png.png" alt="Twitter"></a></li>
+                <li><a href="https://www.linkedin.com/in/pulkit-mangal-09ab09257?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/480px-LinkedIn_logo_initials.png" alt="LinkedIn"></a></li>
+            </ul>
+            <p>&copy; 2024 LibKit by Pulkit. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

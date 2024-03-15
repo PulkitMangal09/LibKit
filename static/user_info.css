@@ -1,0 +1,39 @@
+.shop-section{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 100px;
+    vertical-align:bottom;
+    margin-top: 120px;
+    
+   
+}
+
+.box {
+    height: 300px;
+    width: 500px;
+    padding: 20px 0px 15px;
+    margin-top: 50px;
+    /* margin-bottom: 25px; Increase the margin-bottom value to increase the vertical margin */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* align-items: center; */
+    transition: transform 0.3s ease;
+}
+
+.box:hover {
+    transform: scale(1.05);
+}
+
+
+.box p {
+    margin-left: 10px;
+}
+
+.box h5 {
+    margin-bottom: auto;
+    text-align: center;
+}

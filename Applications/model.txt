@@ -1,0 +1,51 @@
+User Table: id (U)
+            name
+            username (U)
+            email
+            password
+            type - admin/user  -- Deafult -> user
+            backref = books
+            backref = requests
+
+
+Section: id (U)
+        title (U)
+        date
+        image :- Optional
+        descrption
+        backref = Book (On Cascade Delete)
+
+
+Books:  id (U)
+        title (U)
+        author
+        content
+        image
+        bs_id = Section_id  (Book Section_id) (Not Null)
+        bu_id = User_id   (Borrower User_id)
+        Feedback = (1 to 5) (MCQ)  <----- New Column
+        book_requests = backref request  (On Cascade Delete)
+
+
+Request Table:  id
+                user_id = User.id
+                book = Books.id
+                Status = (Pending/Approve/Reject/Return/Revoke)   => Default = Pending
+
+
+                On click Approve -> Return in  User_ dash and Revoke in Admin_dash
+                On click Reject -> Rejected
+        
+
+Feedback :  id
+            borrow_user_id = User.id
+            book_id = Book.id
+            feedback
+            user = backref
+            book = backref
+
+
+Books <--> Section : Many-one (Many books belongs to one section)
+Books <--> User : Many-one (Many books belongs to one User)
+New Realtionship : Request <--> User : Many-one (One User can request many book)
+

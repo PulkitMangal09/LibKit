@@ -1,0 +1,29 @@
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 20px;
+    width: fit-content;
+    margin-left: 55px;
+  }
+  
+  .button {
+    background-color: #e0dfdf;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 350px;
+    margin-top: 10px;
+  }
+  
+  .button:hover {
+    background-color: #B2B2B2;
+  }
+  

@@ -1,0 +1,43 @@
+    .shop-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start; /* Updated to align boxes to the left */
+    }
+
+    .box {
+        height: 220px;
+        width: 1300px;
+        padding: 20px 0px 15px;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        margin-left: 110px;
+        margin-right: 25px; /* Added margin between boxes */
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .box img {
+        width: 140px;
+        height: 170px;
+        margin-left: 50px;
+        margin-bottom: 15px;
+        background-size: cover;
+        background-position: center;
+        float: left; /* Added float property to align image to the left */
+    }
+
+ 
+    .box p {
+        margin-bottom: 15px;
+    }
+    .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
