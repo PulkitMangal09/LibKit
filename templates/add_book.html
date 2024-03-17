@@ -67,7 +67,7 @@
 <div class="box">
 
 
-  <form class="row g-3" action="/{{ id }}/add_book" method="post">
+  <form class="row g-3" action="/{{ id }}/add_book" method="post" enctype="multipart/form-data">
 
       
       <div class="col-md-6">
@@ -80,7 +80,7 @@
       </div>
       <div class="col-12">
         <label for="image" class="form-label">Image Name</label>
-        <input type="text" class="form-control" id="image" placeholder="Please Enter Image Name" name="image">
+        <input type="file" class="form-control" id="image" name="image_file">
       </div>
       <div class="col-12">
         <label for="content" class="form-label">Contnent</label>

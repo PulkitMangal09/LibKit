@@ -63,7 +63,7 @@
 
 <br>
       <div class="box">
-        <form class="row g-3" action="/{{data.id}}/update_book" method="post">
+        <form class="row g-3" action="/{{data.id}}/update_book" method="post" enctype="multipart/form-data">
           <div class="col-md-6">
             <label for="title" class="form-label">New Book Title</label>
             <input type="text" class="form-control" id="title" placeholder="Enter New Book Title"  name="title" required>
@@ -74,7 +74,7 @@
           </div>
           <div class="col-12">
             <label for="image" class="form-label">New Image Name</label>
-            <input type="text" class="form-control" id="image" placeholder="Please Enter New Image Name" name="image">
+            <input type="file" class="form-control" id="image" name="image_file">
           </div>
           <div class="col-12">
             <label for="content" class="form-label">New Content</label>

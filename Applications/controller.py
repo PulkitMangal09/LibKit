@@ -6,6 +6,8 @@ from flask_bcrypt import Bcrypt, generate_password_hash, check_password_hash
 import matplotlib.pyplot as plt
 from io import BytesIO
 from sqlalchemy import or_
+from werkzeug.utils import secure_filename
+import os
 import base64
 import datetime
 import numpy as np
@@ -27,6 +29,16 @@ def load_user(user_id):
 @app.errorhandler(401)
 def unauthorized_error(error):
     return render_template('UA.html', error='You are not authorized to view this page') , 401
+
+
+
+# Define the allowed extensions for image files
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
+# Function to check if the filename has allowed extension
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 
 
@@ -107,17 +119,44 @@ def add_section():
 
     if request.method == 'POST':
         title = request.form.get('title')
-        image= request.form.get('image')
-        description= request.form.get('description')
-        temp=datetime.datetime.now()
-        date=temp.strftime("%B %d, %Y")
+        description = request.form.get('description')
+        
+        # Check if the post request has the file part
+        if 'image_file' not in request.files:
+            return render_template('add_section.html', error='No file part')
+        
+        file = request.files['image_file']
+        
+        # If user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            return render_template('add_section.html', error='No selected file')
+        
+        if file and allowed_file(file.filename):
+            # Secure the filename before saving
+            filename = secure_filename(file.filename)
+            
+            # Define the path where the image will be saved
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            
+            # Save the uploaded file to the specified path
+            file.save(filepath)
+        else:
+            return render_template('add_section.html', error='Invalid file format')
+        
+        temp = datetime.datetime.now()
+        date = temp.strftime("%B %d, %Y")
+        
         existing_section = Section.query.filter_by(title=title).first()
         if existing_section:
             return render_template('add_section.html', error='Section already exists')
-        new_section = Section(title=title, date=date, image=image, description=description)
+        
+        # Store only the filename in the database
+        new_section = Section(title=title, date=date, image=filename, description=description)
         db.session.add(new_section)
         db.session.commit()
         return redirect(url_for('admin_dash'))
+    
     return render_template('add_section.html')
 
 
@@ -152,12 +191,33 @@ def add_book(id):
     if request.method == 'POST':
         title = request.form.get('title')
         author = request.form.get('author')
-        image= request.form.get('image')
+        # Check if the post request has the file part
+        if 'image_file' not in request.files:
+            return render_template('add_book.html', error='No file part')
+        
+        file = request.files['image_file']
+        
+        # If user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            return render_template('add_book.html', error='No selected file')
+        
+        if file and allowed_file(file.filename):
+            # Secure the filename before saving
+            filename = secure_filename(file.filename)
+            
+            # Define the path where the image will be saved
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            
+            # Save the uploaded file to the specified path
+            file.save(filepath)
+        else:
+            return render_template('add_book.html', error='Invalid file format')
         content= request.form.get('content')
         existing_book = Books.query.filter_by(title=title).first()
         if existing_book:
             return render_template('add_book.html', error='Book already exists')
-        new_book = Books(title=title, author=author, image=image, content=content, bs_id=id)
+        new_book = Books(title=title, author=author, image=filename, content=content, bs_id=id)
         db.session.add(new_book)
         db.session.commit()
         return redirect(url_for('section', id=id))
@@ -194,7 +254,29 @@ def update_section(id):
         data.title = request.form.get('title')
         date= datetime.datetime.now()
         data.date=date.strftime("%B %d, %Y")
-        data.image= request.form.get('image')
+        # Check if the post request has the file part
+        if 'image_file' not in request.files:
+            return render_template('update_section.html', error='No file part')
+        
+        file = request.files['image_file']
+        
+        # If user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            return render_template('update_section.html', error='No selected file')
+        
+        if file and allowed_file(file.filename):
+            # Secure the filename before saving
+            filename = secure_filename(file.filename)
+            
+            # Define the path where the image will be saved
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            
+            # Save the uploaded file to the specified path
+            file.save(filepath)
+        else:
+            return render_template('update_section.html', error='Invalid file format')
+        data.image=filename
         data.description= request.form.get('description')
         db.session.commit()
         return redirect(url_for('admin_dash'))
@@ -233,7 +315,29 @@ def update_book(id):
 
         data.title = request.form.get('title')
         data.author= request.form.get('author')
-        data.image= request.form.get('image')
+        # Check if the post request has the file part
+        if 'image_file' not in request.files:
+            return render_template('update_book.html', error='No file part')
+        
+        file = request.files['image_file']
+        
+        # If user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            return render_template('update_book.html', error='No selected file')
+        
+        if file and allowed_file(file.filename):
+            # Secure the filename before saving
+            filename = secure_filename(file.filename)
+            
+            # Define the path where the image will be saved
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            
+            # Save the uploaded file to the specified path
+            file.save(filepath)
+        else:
+            return render_template('update_book.html', error='Invalid file format')
+        data.image=filename
         data.content= request.form.get('content')
         db.session.commit()
         return redirect(url_for('section', id=data.bs_id))
