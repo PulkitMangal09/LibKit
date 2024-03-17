@@ -19,6 +19,8 @@ def create_app():
 app = create_app()
 
 from Applications.controller import *  # Models are imported in controller.py and controllers are imported here
+from Applications.user_controller import *
+from Applications.admin_controller import *
 
 if __name__ == '__main__':
     app.run()
