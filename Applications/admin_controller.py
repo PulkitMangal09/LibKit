@@ -399,7 +399,7 @@ def rejected_requests():
             user = User.query.get(i.user_id)
             book = Books.query.get(i.book_id)
             main_data.append((i, user.username, book.title))
-            return render_template('rejected_requests.html', main_data=main_data)
+        return render_template('rejected_requests.html', main_data=main_data)
         
 
 #Define the User Stats on Admin Dashboard
